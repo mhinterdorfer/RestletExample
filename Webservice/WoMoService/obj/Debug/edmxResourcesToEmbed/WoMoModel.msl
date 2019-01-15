@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WoMoModelStoreContainer" CdmEntityContainer="WoMoEntities">
+    <EntitySetMapping Name="Fahrzeugs">
+      <EntityTypeMapping TypeName="WoMoModel.Fahrzeug">
+        <MappingFragment StoreEntitySet="Fahrzeug">
+          <ScalarProperty Name="fahrgestellNr" ColumnName="fahrgestellNr" />
+          <ScalarProperty Name="standort_idstandort" ColumnName="standort_idstandort" />
+          <ScalarProperty Name="marke" ColumnName="marke" />
+          <ScalarProperty Name="typ" ColumnName="typ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fahrzeug_in_saison">
+      <EntityTypeMapping TypeName="WoMoModel.fahrzeug_in_saison">
+        <MappingFragment StoreEntitySet="fahrzeug_in_saison">
+          <ScalarProperty Name="IdSaison" ColumnName="IdSaison" />
+          <ScalarProperty Name="fahrgestellNr" ColumnName="fahrgestellNr" />
+          <ScalarProperty Name="tagespreis" ColumnName="tagespreis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kundes">
+      <EntityTypeMapping TypeName="WoMoModel.Kunde">
+        <MappingFragment StoreEntitySet="Kunde">
+          <ScalarProperty Name="IdKunde" ColumnName="IdKunde" />
+          <ScalarProperty Name="vorname" ColumnName="vorname" />
+          <ScalarProperty Name="nachname" ColumnName="nachname" />
+          <ScalarProperty Name="strasse" ColumnName="strasse" />
+          <ScalarProperty Name="plz" ColumnName="plz" />
+          <ScalarProperty Name="ort" ColumnName="ort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mietfahrzeugs">
+      <EntityTypeMapping TypeName="WoMoModel.Mietfahrzeug">
+        <MappingFragment StoreEntitySet="Mietfahrzeug">
+          <ScalarProperty Name="fahrgestellNr" ColumnName="fahrgestellNr" />
+          <ScalarProperty Name="idSaison" ColumnName="idSaison" />
+          <ScalarProperty Name="idKunde" ColumnName="idKunde" />
+          <ScalarProperty Name="datumVon" ColumnName="datumVon" />
+          <ScalarProperty Name="datumBis" ColumnName="datumBis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saisons">
+      <EntityTypeMapping TypeName="WoMoModel.Saison">
+        <MappingFragment StoreEntitySet="Saison">
+          <ScalarProperty Name="idSaison" ColumnName="idSaison" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="datumVon" ColumnName="datumVon" />
+          <ScalarProperty Name="datumBis" ColumnName="datumBis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Standorts">
+      <EntityTypeMapping TypeName="WoMoModel.Standort">
+        <MappingFragment StoreEntitySet="Standort">
+          <ScalarProperty Name="idStandort" ColumnName="idStandort" />
+          <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+          <ScalarProperty Name="strasse" ColumnName="strasse" />
+          <ScalarProperty Name="plz" ColumnName="plz" />
+          <ScalarProperty Name="ort" ColumnName="ort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

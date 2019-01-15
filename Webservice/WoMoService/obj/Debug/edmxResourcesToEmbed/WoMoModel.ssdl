@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WoMoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Fahrzeug">
+    <Key>
+      <PropertyRef Name="fahrgestellNr" />
+    </Key>
+    <Property Name="fahrgestellNr" Type="int" Nullable="false" />
+    <Property Name="standort_idstandort" Type="int" />
+    <Property Name="marke" Type="varchar" MaxLength="45" />
+    <Property Name="typ" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="fahrzeug_in_saison">
+    <Key>
+      <PropertyRef Name="IdSaison" />
+      <PropertyRef Name="fahrgestellNr" />
+    </Key>
+    <Property Name="IdSaison" Type="int" Nullable="false" />
+    <Property Name="fahrgestellNr" Type="int" Nullable="false" />
+    <Property Name="tagespreis" Type="float" />
+  </EntityType>
+  <EntityType Name="Kunde">
+    <Key>
+      <PropertyRef Name="IdKunde" />
+    </Key>
+    <Property Name="IdKunde" Type="int" Nullable="false" />
+    <Property Name="vorname" Type="varchar" MaxLength="80" />
+    <Property Name="nachname" Type="varchar" MaxLength="80" />
+    <Property Name="strasse" Type="varchar" MaxLength="80" />
+    <Property Name="plz" Type="int" />
+    <Property Name="ort" Type="varchar" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="Mietfahrzeug">
+    <Key>
+      <PropertyRef Name="fahrgestellNr" />
+      <PropertyRef Name="idSaison" />
+      <PropertyRef Name="idKunde" />
+    </Key>
+    <Property Name="fahrgestellNr" Type="int" Nullable="false" />
+    <Property Name="idSaison" Type="int" Nullable="false" />
+    <Property Name="idKunde" Type="int" Nullable="false" />
+    <Property Name="datumVon" Type="date" />
+    <Property Name="datumBis" Type="date" />
+  </EntityType>
+  <EntityType Name="Saison">
+    <Key>
+      <PropertyRef Name="idSaison" />
+    </Key>
+    <Property Name="idSaison" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="80" />
+    <Property Name="datumVon" Type="date" />
+    <Property Name="datumBis" Type="date" />
+  </EntityType>
+  <EntityType Name="Standort">
+    <Key>
+      <PropertyRef Name="idStandort" />
+    </Key>
+    <Property Name="idStandort" Type="int" Nullable="false" />
+    <Property Name="bezeichnung" Type="varchar" MaxLength="80" />
+    <Property Name="strasse" Type="varchar" MaxLength="80" />
+    <Property Name="plz" Type="int" />
+    <Property Name="ort" Type="varchar" MaxLength="80" />
+  </EntityType>
+  <Association Name="FK_Fahrzeug_Mietfahrzeug">
+    <End Role="Fahrzeug" Type="Self.Fahrzeug" Multiplicity="1" />
+    <End Role="Mietfahrzeug" Type="Self.Mietfahrzeug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fahrzeug">
+        <PropertyRef Name="fahrgestellNr" />
+      </Principal>
+      <Dependent Role="Mietfahrzeug">
+        <PropertyRef Name="fahrgestellNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FahrzeugiS_Fahrzeug">
+    <End Role="Fahrzeug" Type="Self.Fahrzeug" Multiplicity="1" />
+    <End Role="fahrzeug_in_saison" Type="Self.fahrzeug_in_saison" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fahrzeug">
+        <PropertyRef Name="fahrgestellNr" />
+      </Principal>
+      <Dependent Role="fahrzeug_in_saison">
+        <PropertyRef Name="fahrgestellNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FahrzeugiS_Saison">
+    <End Role="Saison" Type="Self.Saison" Multiplicity="1" />
+    <End Role="fahrzeug_in_saison" Type="Self.fahrzeug_in_saison" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saison">
+        <PropertyRef Name="idSaison" />
+      </Principal>
+      <Dependent Role="fahrzeug_in_saison">
+        <PropertyRef Name="IdSaison" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kunde_Mietfahrzeug">
+    <End Role="Kunde" Type="Self.Kunde" Multiplicity="1" />
+    <End Role="Mietfahrzeug" Type="Self.Mietfahrzeug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kunde">
+        <PropertyRef Name="IdKunde" />
+      </Principal>
+      <Dependent Role="Mietfahrzeug">
+        <PropertyRef Name="idKunde" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saison_Mietfahrzeug">
+    <End Role="Saison" Type="Self.Saison" Multiplicity="1" />
+    <End Role="Mietfahrzeug" Type="Self.Mietfahrzeug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saison">
+        <PropertyRef Name="idSaison" />
+      </Principal>
+      <Dependent Role="Mietfahrzeug">
+        <PropertyRef Name="idSaison" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Standort_Fahrzeug">
+    <End Role="Standort" Type="Self.Standort" Multiplicity="0..1" />
+    <End Role="Fahrzeug" Type="Self.Fahrzeug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Standort">
+        <PropertyRef Name="idStandort" />
+      </Principal>
+      <Dependent Role="Fahrzeug">
+        <PropertyRef Name="standort_idstandort" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WoMoModelStoreContainer">
+    <EntitySet Name="Fahrzeug" EntityType="Self.Fahrzeug" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fahrzeug_in_saison" EntityType="Self.fahrzeug_in_saison" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kunde" EntityType="Self.Kunde" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mietfahrzeug" EntityType="Self.Mietfahrzeug" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Saison" EntityType="Self.Saison" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Standort" EntityType="Self.Standort" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Fahrzeug_Mietfahrzeug" Association="Self.FK_Fahrzeug_Mietfahrzeug">
+      <End Role="Fahrzeug" EntitySet="Fahrzeug" />
+      <End Role="Mietfahrzeug" EntitySet="Mietfahrzeug" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FahrzeugiS_Fahrzeug" Association="Self.FK_FahrzeugiS_Fahrzeug">
+      <End Role="Fahrzeug" EntitySet="Fahrzeug" />
+      <End Role="fahrzeug_in_saison" EntitySet="fahrzeug_in_saison" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FahrzeugiS_Saison" Association="Self.FK_FahrzeugiS_Saison">
+      <End Role="Saison" EntitySet="Saison" />
+      <End Role="fahrzeug_in_saison" EntitySet="fahrzeug_in_saison" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kunde_Mietfahrzeug" Association="Self.FK_Kunde_Mietfahrzeug">
+      <End Role="Kunde" EntitySet="Kunde" />
+      <End Role="Mietfahrzeug" EntitySet="Mietfahrzeug" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saison_Mietfahrzeug" Association="Self.FK_Saison_Mietfahrzeug">
+      <End Role="Saison" EntitySet="Saison" />
+      <End Role="Mietfahrzeug" EntitySet="Mietfahrzeug" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Standort_Fahrzeug" Association="Self.FK_Standort_Fahrzeug">
+      <End Role="Standort" EntitySet="Standort" />
+      <End Role="Fahrzeug" EntitySet="Fahrzeug" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
