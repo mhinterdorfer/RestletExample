@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\OneDrive - HTBLA Perg\_SCHULE\5AHIF\POS_C#\1.Test\Test_Hinterdorfer\WoMoService\WoMoModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\OneDrive - HTBLA Perg\_SCHULE\5AHIF\POS_C#\Übungen\2019.01.15_RestletExample\Webservice\WoMoService\WoMoModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
