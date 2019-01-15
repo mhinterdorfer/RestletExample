@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoService", "WoMoService\WoMoService.csproj", "{BA890D10-B5E4-4DD2-B209-BDC09A90286D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoClient", "WoMoClient\WoMoClient.csproj", "{14BCD2C3-C152-46B0-BAB3-EC286CEBADBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoClient", "WoMoService\WoMoService.csproj", "{14BCD2C3-C152-46B0-BAB3-EC286CEBADBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
