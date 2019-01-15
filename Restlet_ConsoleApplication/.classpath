@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/OneDrive - HTBLA Perg/_SCHULE/5AHIF/POS_C#/lib/restlet-jee-2.3.12/lib/org.restlet.ext.atom.jar"/>
+	<classpathentry kind="lib" path="D:/OneDrive - HTBLA Perg/_SCHULE/5AHIF/POS_C#/lib/restlet-jee-2.3.12/lib/org.restlet.ext.freemarker.jar"/>
+	<classpathentry kind="lib" path="D:/OneDrive - HTBLA Perg/_SCHULE/5AHIF/POS_C#/lib/restlet-jee-2.3.12/lib/org.restlet.ext.odata.jar"/>
+	<classpathentry kind="lib" path="D:/OneDrive - HTBLA Perg/_SCHULE/5AHIF/POS_C#/lib/restlet-jee-2.3.12/lib/org.restlet.ext.xml.jar"/>
+	<classpathentry kind="lib" path="D:/OneDrive - HTBLA Perg/_SCHULE/5AHIF/POS_C#/lib/restlet-jee-2.3.12/lib/org.restlet.jar"/>
+	<classpathentry kind="lib" path="D:/OneDrive - HTBLA Perg/_SCHULE/5AHIF/POS_C#/lib/restlet-jee-2.3.12/lib/org.freemarker_2.3/org.freemarker.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
