@@ -13,7 +13,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/OneDrive - HTBLA Perg/_SCHULE/5AHIF/POS_C#/lib/restlet-jee-2.3.12/lib/org.restlet.ext.odata.jar"/>
-	<classpathentry kind="lib" path="D:/OneDrive - HTBLA Perg/_SCHULE/5AHIF/POS_C#/lib/restlet-jee-2.3.12/lib/org.restlet.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
