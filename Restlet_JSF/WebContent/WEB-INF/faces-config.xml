@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <navigation-rule>
+  <navigation-case>
+   <from-outcome>show_fahrzeug</from-outcome>
+   <to-view-id>/ListAllPages/fahrzeug.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>show_fahrzeuge_in_saison</from-outcome>
+   <to-view-id>/ListAllPages/fahrzeuge_in_saison.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>show_kunde</from-outcome>
+   <to-view-id>/ListAllPages/kunde.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>show_mietfahrzeug</from-outcome>
+   <to-view-id>/ListAllPages/mietfahrzeug.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>show_saison</from-outcome>
+   <to-view-id>/ListAllPages/saison.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>show_standort</from-outcome>
+   <to-view-id>/ListAllPages/standort.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <application/>
+</faces-config>

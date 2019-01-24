@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#ListAllPages#fahrzeug.xhtml"
+  PATH="/ListAllPages/fahrzeug.xhtml" SHAPE="464,64,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#ListAllPages#fahrzeuge_in_saison.xhtml"
+  PATH="/ListAllPages/fahrzeuge_in_saison.xhtml" SHAPE="464,112,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#ListAllPages#kunde.xhtml"
+  PATH="/ListAllPages/kunde.xhtml" SHAPE="464,160,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#ListAllPages#mietfahrzeug.xhtml"
+  PATH="/ListAllPages/mietfahrzeug.xhtml" SHAPE="464,208,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#ListAllPages#saison.xhtml"
+  PATH="/ListAllPages/saison.xhtml" SHAPE="464,256,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#ListAllPages#standort.xhtml"
+  PATH="/ListAllPages/standort.xhtml" SHAPE="464,304,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:" SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="show_fahrzeug::#ListAllPages#fahrzeug.xhtml"
+    NAME="output" PATH="/ListAllPages/fahrzeug.xhtml"
+    TARGET="rules:#ListAllPages#fahrzeug.xhtml" TITLE="show_fahrzeug" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="show_fahrzeuge_in_saison::#ListAllPages#fahrzeuge_in_saison.xhtml"
+    NAME="output1" PATH="/ListAllPages/fahrzeuge_in_saison.xhtml"
+    TARGET="rules:#ListAllPages#fahrzeuge_in_saison.xhtml"
+    TITLE="show_fahrzeuge_in_saison" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="show_kunde::#ListAllPages#kunde.xhtml"
+    NAME="output2" PATH="/ListAllPages/kunde.xhtml"
+    TARGET="rules:#ListAllPages#kunde.xhtml" TITLE="show_kunde" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="show_mietfahrzeug::#ListAllPages#mietfahrzeug.xhtml"
+    NAME="output3" PATH="/ListAllPages/mietfahrzeug.xhtml"
+    TARGET="rules:#ListAllPages#mietfahrzeug.xhtml"
+    TITLE="show_mietfahrzeug" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="show_saison::#ListAllPages#saison.xhtml"
+    NAME="output4" PATH="/ListAllPages/saison.xhtml"
+    TARGET="rules:#ListAllPages#saison.xhtml" TITLE="show_saison" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="show_standort::#ListAllPages#standort.xhtml"
+    NAME="output5" PATH="/ListAllPages/standort.xhtml"
+    TARGET="rules:#ListAllPages#standort.xhtml" TITLE="show_standort" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

@@ -2,15 +2,15 @@ package womobean;
 
 import java.util.List;
 
-import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import womodao.Fahrzeug_in_saisonDAO;
 import womomodel.Fahrzeug_in_saison;
 import java.io.Serializable;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class Fahrzeug_in_saisonBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,5 +20,9 @@ public class Fahrzeug_in_saisonBean implements Serializable {
 
 	public List<Fahrzeug_in_saison> getAll() {
 		return dao.findAll();
+	}
+	
+	public Fahrzeug_in_saison getById(int id) {
+		return dao.getById(id);
 	}
 }

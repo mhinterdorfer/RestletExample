@@ -4,22 +4,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-
 import org.restlet.ext.odata.Query;
 
 import service.WoMoService;
+import womomodel.Mietfahrzeug;
 import womomodel.Standort;
 
-@Named
+@ManagedBean
 @SessionScoped
 public class StandortDAO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject 
-	WoMoService service;
+	transient private WoMoService service;
 	
 	public List<Standort> findAll(){
 		Query<Standort> query = service.createStandortQuery("/Standorts");
@@ -28,5 +28,10 @@ public class StandortDAO implements Serializable {
 			standorte.add(standort);
 		}
 		return standorte;
+	}
+	
+	public Standort getById(int id) {
+		Query<Standort> query = service.createStandortQuery("/Standorts(" + id + ")");
+		return query.iterator().next();
 	}
 }

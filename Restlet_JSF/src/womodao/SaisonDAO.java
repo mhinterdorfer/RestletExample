@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,7 +20,7 @@ public class SaisonDAO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject 
-	WoMoService service;
+	transient private WoMoService service;
 	
 	public List<Saison> findAll(){
 		Query<Saison> query = service.createSaisonQuery("/Saisons");
@@ -28,5 +29,10 @@ public class SaisonDAO implements Serializable {
 			saisons.add(saison);
 		}
 		return saisons;
+	}
+	
+	public Saison getById(int id) {
+		Query<Saison> query = service.createSaisonQuery("/Saisons(" + id + ")");
+		return query.iterator().next();
 	}
 }

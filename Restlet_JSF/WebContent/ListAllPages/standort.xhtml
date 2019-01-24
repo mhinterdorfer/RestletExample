@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:include src="../header_menu.xhtml" />
+	<p:dataTable var="standort" value="#{standortBean.all}"
+		style="margin-bottom:40px">
+		<f:facet name="header">
+            Standorte
+        </f:facet>
+
+		<p:column headerText="ID">
+			<h:outputText value="#{standort.idStandort}" />
+		</p:column>
+
+		<p:column headerText="Bezeichnung">
+			<h:outputText value="#{standort.bezeichnung}" />
+		</p:column>
+
+		<p:column headerText="Straße">
+			<h:outputText value="#{standort.strasse}" />
+		</p:column>
+
+		<p:column headerText="PLZ">
+			<h:outputText value="#{standort.plz}" />
+		</p:column>
+
+		<p:column headerText="Ort">
+			<h:outputText value="#{standort.ort}" />
+		</p:column>
+	</p:dataTable>
+</body>
+</html>

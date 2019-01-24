@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form style="padding-bottom:10px">
+		<p:menubar>
+			<p:submenu label="Fahrzeuge in Saison">
+				<p:menuitem value="Anzeigen" action="show_fahrzeuge_in_saison" />
+			</p:submenu>
+
+			<p:submenu label="Fahrzeug">
+				<p:menuitem value="Anzeigen" action="show_fahrzeug" />
+			</p:submenu>
+
+			<p:submenu label="Kunden">
+				<p:menuitem value="Anzeigen" action="show_kunde" />
+			</p:submenu>
+
+			<p:submenu label="Mietfahrzeug">
+				<p:menuitem value="Anzeigen" action="show_mietfahrzeug" />
+			</p:submenu>
+
+			<p:submenu label="Saison">
+				<p:menuitem value="Anzeigen" action="show_saison" />
+			</p:submenu>
+
+			<p:submenu label="Standort">
+				<p:menuitem value="Anzeigen" action="show_standort" />
+			</p:submenu>
+
+			<f:facet name="options">
+				<p:commandButton type="button" value="Logout"
+					action="#{loginBean.logout()}" />
+			</f:facet>
+		</p:menubar>
+	</h:form>
+
+</ui:composition>

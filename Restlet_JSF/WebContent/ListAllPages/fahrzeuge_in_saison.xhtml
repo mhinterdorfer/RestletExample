@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:include src="../header_menu.xhtml" />
+	<p:dataTable var="fahrzeug" value="#{fahrzeug_in_saisonBean.all}"
+		style="margin-bottom:40px">
+		<f:facet name="header">
+            Fahrzeuge in Saisonen
+        </f:facet>
+
+		<p:column headerText="Fahrgestellnummer">
+			<h:outputText value="#{fahrzeug.fahrgestellNr}" />
+		</p:column>
+
+		<p:column headerText="Marke">
+			<h:outputText
+				value="#{fahrzeugBean.getById(fahrzeug.fahrgestellNr).marke}" />
+		</p:column>
+
+		<p:column headerText="Typ">
+			<h:outputText
+				value="#{fahrzeugBean.getById(fahrzeug.fahrgestellNr).typ}" />
+		</p:column>
+
+		<p:column headerText="Saison">
+			<h:outputText value="#{saisonBean.getById(fahrzeug.idSaison).name}" />
+		</p:column>
+
+		<p:column headerText="Tagespreis">
+			<h:outputText value="#{fahrzeug.tagespreis}" />
+		</p:column>
+	</p:dataTable>
+</body>
+</html>

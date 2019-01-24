@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:include src="../header_menu.xhtml" />
+	<p:dataTable var="kunde" value="#{kundeBean.all}"
+		style="margin-bottom:40px">
+		<f:facet name="header">
+            Kunde
+        </f:facet>
+
+		<p:column headerText="ID">
+			<h:outputText value="#{kunde.idKunde}" />
+		</p:column>
+
+		<p:column headerText="Vorname">
+			<h:outputText value="#{kunde.vorname}" />
+		</p:column>
+
+		<p:column headerText="Nachname">
+			<h:outputText value="#{kunde.nachname}" />
+		</p:column>
+
+		<p:column headerText="Straße">
+			<h:outputText value="#{kunde.strasse}" />
+		</p:column>
+
+		<p:column headerText="PLZ">
+			<h:outputText value="#{kunde.plz}" />
+		</p:column>
+
+		<p:column headerText="Ort">
+			<h:outputText value="#{kunde.ort}" />
+		</p:column>
+	</p:dataTable>
+</body>
+</html>

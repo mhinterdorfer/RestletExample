@@ -6,11 +6,13 @@ import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import womodao.KundeDAO;
+import womomodel.Fahrzeug_in_saison;
 import womomodel.Kunde;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class KundeBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,6 +22,10 @@ public class KundeBean implements Serializable {
 	
 	public List<Kunde> getAll(){
 		return dao.findAll();
+	}
+	
+	public Kunde getById(int id) {
+		return dao.getById(id);
 	}
 
 }
