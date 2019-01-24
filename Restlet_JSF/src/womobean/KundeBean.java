@@ -27,5 +27,9 @@ public class KundeBean implements Serializable {
 	public Kunde getById(int id) {
 		return dao.getById(id);
 	}
+	
+	public Kunde findByParameters(String vn, String nn, String str, String plz, String ort) {
+		return dao.findByParameters(vn, nn, str, plz, ort);
+	}
 
 }

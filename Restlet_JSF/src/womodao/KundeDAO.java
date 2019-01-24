@@ -34,4 +34,16 @@ public class KundeDAO implements Serializable {
 		Query<Kunde> query = service.createKundeQuery("/Kundes(" + id + ")");
 		return query.iterator().next();
 	}
+	
+	public Kunde findByParameters(String vn, String nn, String str, String plz, String ort) {
+		try {
+			Query<Kunde> query = service.createKundeQuery("/Kundes").filter("((vorname eq '" + vn + "') and (nachname eq '" + nn + "') and (strasse eq '" + str + "') and (plz eq " + plz + ") and (ort eq '" + ort + "'))");
+			for(Kunde kunde : query) {
+				return kunde;
+			}
+			return null;
+		}catch(Exception ex) {
+			return null;
+		}
+	}
 }
