@@ -50,13 +50,12 @@
    PATH="/login.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="login::#home.xhtml" NAME="output"
     PATH="/home.xhtml" TARGET="rules:#home.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="::#home.xhtml" NAME="output1"
-    PATH="/home.xhtml" TARGET="rules:#home.xhtml" TITLE="[any]" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#home.xhtml" PATH="/home.xhtml"
-  SHAPE="233,371,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#home.xhtml:0" NAME="item" PATH="/home.xhtml" model-entity="JSFProcessItem">
+  SHAPE="233,371,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::1" SHAPE="32,625,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="logout::#login.xhtml" NAME="output"
     PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="logout" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>

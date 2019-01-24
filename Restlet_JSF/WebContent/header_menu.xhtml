@@ -6,33 +6,32 @@
 
 	<h:form style="padding-bottom:10px">
 		<p:menubar>
-			<p:submenu label="Fahrzeuge in Saison" rendered="false">
-				<p:menuitem value="Anzeigen" action="show_fahrzeuge_in_saison" />
+			<p:submenu label="Fahrzeuge in Saison" rendered="#{empty loginBean.kundenNR}">
+				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_fahrzeuge_in_saison')}" />
 			</p:submenu>
 
 			<p:submenu label="Fahrzeug">
-				<p:menuitem value="Anzeigen" action="show_fahrzeug" />
+				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_fahrzeug')}" />
 			</p:submenu>
 
-			<p:submenu label="Kunden">
-				<p:menuitem value="Anzeigen" action="show_kunde" />
+			<p:submenu label="Kunden" rendered="#{empty loginBean.kundenNR}">
+				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_kunde')}" />
 			</p:submenu>
 
 			<p:submenu label="Mietfahrzeug">
-				<p:menuitem value="Anzeigen" action="show_mietfahrzeug" />
+				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_mietfahrzeug')}" />
 			</p:submenu>
 
 			<p:submenu label="Saison">
-				<p:menuitem value="Anzeigen" action="show_saison" />
+				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_saison')}" />
 			</p:submenu>
 
 			<p:submenu label="Standort">
-				<p:menuitem value="Anzeigen" action="show_standort" />
+				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_standort')}" />
 			</p:submenu>
 
 			<f:facet name="options">
-				<p:commandButton type="button" value="Logout"
-					action="#{loginBean.logout()}" />
+				<p:commandButton type="button" value="Logout" action="#{loginBean.logout()}" />
 			</f:facet>
 		</p:menubar>
 	</h:form>

@@ -25,9 +25,10 @@ public class LoginBean implements Serializable {
 	public String login(String vorname, String nachname, String strasse, String plz, String ort) {
 		if (vorname.equals("admin")) {
 			return redirectBean.goToPage("login");
-		} else if (!vorname.equals("") || !nachname.equals("") || !strasse.equals("") || !plz.equals("") || ort.equals("")) {
+		} else if (!vorname.equals("") || !nachname.equals("") || !strasse.equals("") || !plz.equals("")
+				|| ort.equals("")) {
 			Kunde kunde = kundeBean.findByParameters(vorname, nachname, strasse, plz, ort);
-			if(kunde != null) {
+			if (kunde != null) {
 				kundenNR = kunde.getIdKunde();
 				return redirectBean.goToPage("login");
 			}
@@ -45,8 +46,17 @@ public class LoginBean implements Serializable {
 		this.message = message;
 	}
 
+	public Integer getKundenNR() {
+		return kundenNR;
+	}
+
+	public void setKundenNR(Integer kundenNR) {
+		this.kundenNR = kundenNR;
+	}
+
 	public String logout() {
-		kundenNR = null;
-		return redirectBean.goToPage("logout");
+		this.kundenNR = null;
+		this.message = "";
+		return redirectBean.goToPage("logout?faces-redirect=true");
 	}
 }
