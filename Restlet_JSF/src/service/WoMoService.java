@@ -1,6 +1,3 @@
-package service;
-
-
 /**
  * Copyright 2005-2014 Restlet
  * 
@@ -24,15 +21,16 @@ package service;
  * 
  * Restlet is a registered trademark of Restlet S.A.S.
  */
+package service;
 
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 
+import org.restlet.data.MediaType;
+import org.restlet.data.Preference;
 import org.restlet.data.Reference;
 import org.restlet.ext.odata.Query;
-import org.restlet.ext.odata.Service;
 import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
@@ -50,14 +48,14 @@ import womomodel.Standort;
 * @see <a href="http://localhost:50021/WoMoService.svc/$metadata">Metadata of the target OData service</a>
 *
 */
-@RequestScoped
-public class WoMoServiceService extends Service {
-	
+@SessionScoped
+public class WoMoService extends org.restlet.ext.odata.Service {
+
     /**
      * Constructor.
      * 
      */
-    public WoMoServiceService() {
+    public WoMoService() {
         super("http://localhost:50021/WoMoService.svc/");
     }
 
