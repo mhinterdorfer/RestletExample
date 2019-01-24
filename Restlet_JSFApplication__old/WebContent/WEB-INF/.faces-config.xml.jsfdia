@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="176,72,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login_kunde::#kunde_home.xhtml"
+    NAME="output" PATH="/kunde_home.xhtml"
+    TARGET="rules:#kunde_home.xhtml" TITLE="login_kunde" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login_admin::#admin_home.xhtml"
+    NAME="output1" PATH="/admin_home.xhtml"
+    TARGET="rules:#admin_home.xhtml" TITLE="login_admin" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#kunde_home.xhtml" PATH="/kunde_home.xhtml"
+  SHAPE="432,111,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#kunde_home.xhtml:0" NAME="item"
+   PATH="/kunde_home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logout::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin_home.xhtml" PATH="/admin_home.xhtml"
+  SHAPE="440,288,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin_home.xhtml:0" NAME="item"
+   PATH="/admin_home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logout::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
