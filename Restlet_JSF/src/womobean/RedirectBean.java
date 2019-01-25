@@ -1,8 +1,10 @@
 package womobean;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 @Named
@@ -12,5 +14,13 @@ public class RedirectBean implements Serializable {
 
 	public String goToPage(String page) {
 		return page;
+	}
+	
+	public void goToPageXHTML(String page) {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(page);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

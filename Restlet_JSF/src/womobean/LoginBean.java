@@ -1,8 +1,10 @@
 package womobean;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -22,19 +24,18 @@ public class LoginBean implements Serializable {
 	String message = "";
 	Integer kundenNR = null;
 
-	public String login(String vorname, String nachname, String strasse, String plz, String ort) {
+	public void login(String vorname, String nachname, String strasse, String plz, String ort) {
 		if (vorname.equals("admin")) {
-			return redirectBean.goToPage("login");
+			redirectBean.goToPageXHTML("home.xhtml");
 		} else if (!vorname.equals("") || !nachname.equals("") || !strasse.equals("") || !plz.equals("")
 				|| ort.equals("")) {
 			Kunde kunde = kundeBean.findByParameters(vorname, nachname, strasse, plz, ort);
 			if (kunde != null) {
 				kundenNR = kunde.getIdKunde();
-				return redirectBean.goToPage("login");
+				redirectBean.goToPageXHTML("home.xhtml");
 			}
 		}
 		setMessage("Login fehlgeschlagen.");
-		return "";
 	}
 
 	public String getMessage() {
@@ -54,9 +55,9 @@ public class LoginBean implements Serializable {
 		this.kundenNR = kundenNR;
 	}
 
-	public String logout() {
+	public void logout() {
 		this.kundenNR = null;
 		this.message = "";
-		return redirectBean.goToPage("logout?faces-redirect=true");
+		redirectBean.goToPageXHTML("login.xhtml");
 	}
 }
