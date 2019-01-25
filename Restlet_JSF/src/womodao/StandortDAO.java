@@ -34,4 +34,20 @@ public class StandortDAO implements Serializable {
 		Query<Standort> query = service.createStandortQuery("/Standorts(" + id + ")");
 		return query.iterator().next();
 	}
+
+	public boolean add(int standortNr, String bezeichnung, String strasse, int plz, String ort) {
+		try {
+			Standort standort = new Standort();
+			standort.setIdStandort(standortNr);
+			standort.setBezeichnung(bezeichnung);
+			standort.setStrasse(strasse);
+			standort.setPlz(plz);
+			standort.setOrt(ort);
+			service.addEntity(standort);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 }
