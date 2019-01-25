@@ -13,7 +13,7 @@
 
 			<p:submenu label="Fahrzeug">
 				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_fahrzeug')}" />
-				<p:menuitem value="Hinzufügen" action="#{redirectBean.goToPage('add_fahrzeug')}" />
+				<p:menuitem rendered="#{empty loginBean.kundenNR}" value="Hinzufügen" action="#{redirectBean.goToPage('add_fahrzeug')}" />
 			</p:submenu>
 
 			<p:submenu label="Kunden" rendered="#{empty loginBean.kundenNR}">
@@ -23,14 +23,17 @@
 
 			<p:submenu label="Mietfahrzeug">
 				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_mietfahrzeug')}" />
+				<p:menuitem value="Hinzufügen" action="#{redirectBean.goToPage('add_mietfahrzeug')}" />
 			</p:submenu>
 
 			<p:submenu label="Saison">
 				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_saison')}" />
+				<p:menuitem rendered="#{empty loginBean.kundenNR}" value="Hinzufügen" action="#{redirectBean.goToPage('add_saison')}" />
 			</p:submenu>
 
 			<p:submenu label="Standort">
 				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_standort')}" />
+				<p:menuitem rendered="#{empty loginBean.kundenNR}" value="Hinzufügen" action="#{redirectBean.goToPage('add_standort')}" />
 			</p:submenu>
 
 			<f:facet name="options">

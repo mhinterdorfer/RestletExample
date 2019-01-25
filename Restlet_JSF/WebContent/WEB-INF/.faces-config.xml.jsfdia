@@ -20,27 +20,35 @@
   model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:" SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="add_standort::#CreatePages#add_standort.xhtml" NAME="output"
+    PATH="/CreatePages/add_standort.xhtml"
+    TARGET="rules:#CreatePages#add_standort.xhtml" TITLE="add_standort" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="add_mietfahrzeug::#CreatePages#add_mietfahrzeug.xhtml"
+    NAME="output1" PATH="/CreatePages/add_mietfahrzeug.xhtml"
+    TARGET="rules:#CreatePages#add_mietfahrzeug.xhtml"
+    TITLE="add_mietfahrzeug" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="add_kunde::#CreatePages#add_kunde.xhtml"
-    NAME="output" PATH="/CreatePages/add_kunde.xhtml"
+    NAME="output2" PATH="/CreatePages/add_kunde.xhtml"
     TARGET="rules:#CreatePages#add_kunde.xhtml" TITLE="add_kunde" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="add_fahrzeug::#CreatePages#add_fahrzeug.xhtml" NAME="output1"
+    ID="add_fahrzeug::#CreatePages#add_fahrzeug.xhtml" NAME="output3"
     PATH="/CreatePages/add_fahrzeug.xhtml"
     TARGET="rules:#CreatePages#add_fahrzeug.xhtml" TITLE="add_fahrzeug" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="show_fahrzeug::#ListAllPages#fahrzeug.xhtml"
-    NAME="output2" PATH="/ListAllPages/fahrzeug.xhtml"
-    TARGET="rules:#ListAllPages#fahrzeug.xhtml" TITLE="show_fahrzeug" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="show_kunde::#ListAllPages#kunde.xhtml"
-    NAME="output3" PATH="/ListAllPages/kunde.xhtml"
-    TARGET="rules:#ListAllPages#kunde.xhtml" TITLE="show_kunde" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="show_fahrzeuge_in_saison::#ListAllPages#fahrzeuge_in_saison.xhtml"
+    NAME="output4" PATH="/ListAllPages/fahrzeuge_in_saison.xhtml"
+    TARGET="rules:#ListAllPages#fahrzeuge_in_saison.xhtml"
+    TITLE="show_fahrzeuge_in_saison" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
     ID="show_mietfahrzeug::#ListAllPages#mietfahrzeug.xhtml"
-    NAME="output4" PATH="/ListAllPages/mietfahrzeug.xhtml"
+    NAME="output5" PATH="/ListAllPages/mietfahrzeug.xhtml"
     TARGET="rules:#ListAllPages#mietfahrzeug.xhtml"
     TITLE="show_mietfahrzeug" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="show_standort::#ListAllPages#standort.xhtml"
-    NAME="output5" PATH="/ListAllPages/standort.xhtml"
-    TARGET="rules:#ListAllPages#standort.xhtml" TITLE="show_standort" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="show_saison::#ListAllPages#saison.xhtml"
+    NAME="output6" PATH="/ListAllPages/saison.xhtml"
+    TARGET="rules:#ListAllPages#saison.xhtml" TITLE="show_saison" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
@@ -65,4 +73,10 @@
   PATH="/CreatePages/add_fahrzeuge_in_saison.xhtml" SHAPE="512,513,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#CreatePages#add_kunde.xhtml"
   PATH="/CreatePages/add_kunde.xhtml" SHAPE="512,513,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#CreatePages#add_mietfahrzeug.xhtml"
+  PATH="/CreatePages/add_mietfahrzeug.xhtml" SHAPE="512,513,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#CreatePages#add_saison.xhtml"
+  PATH="/CreatePages/add_saison.xhtml" SHAPE="512,545,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#CreatePages#add_standort.xhtml"
+  PATH="/CreatePages/add_standort.xhtml" SHAPE="512,545,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
