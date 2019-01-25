@@ -23,11 +23,15 @@
 		</p:column>
 
 		<p:column headerText="Datum Von">
-			<h:outputText value="#{fahrzeug.datumVon}" />
+			<h:outputText value="#{fahrzeug.datumVon}">
+				<f:convertDateTime pattern="dd.MM.yyyy" />
+			</h:outputText>
 		</p:column>
 
 		<p:column headerText="Datum Bis">
-			<h:outputText value="#{fahrzeug.datumBis}" />
+			<h:outputText value="#{fahrzeug.datumBis}" >
+				<f:convertDateTime pattern="dd.MM.yyyy" />
+			</h:outputText>
 		</p:column>
 
 		<p:column headerText="Saison">

@@ -23,11 +23,15 @@
 		</p:column>
 
 		<p:column headerText="Datum Von">
-			<h:outputText value="#{saison.datumVon}" />
+			<h:outputText value="#{saison.datumVon}">
+				<f:convertDateTime pattern="dd.MM.yyyy" />
+			</h:outputText>
 		</p:column>
 
 		<p:column headerText="Datum Bis">
-			<h:outputText value="#{saison.datumBis}" />
+			<h:outputText value="#{saison.datumBis}" >
+				<f:convertDateTime pattern="dd.MM.yyyy" />
+			</h:outputText>
 		</p:column>
 	</p:dataTable>
 </body>
