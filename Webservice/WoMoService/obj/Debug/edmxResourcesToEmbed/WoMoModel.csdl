@@ -27,7 +27,7 @@
     <Key>
       <PropertyRef Name="IdKunde" />
     </Key>
-    <Property Name="IdKunde" Type="Int32" Nullable="false" />
+    <Property Name="IdKunde" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="vorname" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
     <Property Name="nachname" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
     <Property Name="strasse" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
