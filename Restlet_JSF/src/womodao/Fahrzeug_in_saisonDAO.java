@@ -35,4 +35,18 @@ public class Fahrzeug_in_saisonDAO implements Serializable {
 		Query<Fahrzeug_in_saison> query = service.createFahrzeug_in_saisonQuery("/fahrzeug_in_saison(" + id + ")");
 		return query.iterator().next();
 	}
+
+	public boolean add(int fahrgestellNr, int saison, double tagespreis) {
+		try {
+			Fahrzeug_in_saison fahrzeug = new Fahrzeug_in_saison();
+			fahrzeug.setFahrgestellNr(fahrgestellNr);
+			fahrzeug.setIdSaison(saison);
+			fahrzeug.setTagespreis(tagespreis);
+			service.addEntity(fahrzeug);
+			return true;
+		}catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 }

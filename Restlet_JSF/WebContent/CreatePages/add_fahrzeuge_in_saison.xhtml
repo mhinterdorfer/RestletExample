@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
+
+	<ui:include src="../header_menu.xhtml" />
+	<h:form>
+		<h1>Fahrzeuge in Saisonen hinzufügen</h1>
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel for="fahrgestellNr" value="Fahrgestellnummer: " />
+			<p:selectOneMenu id="fahrgestellNr" value="#{fahrgestellNr}">
+				<f:selectItem itemLabel=" - " itemValue="" />
+				<f:selectItems value="#{fahrzeugBean.allDropdown}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="saison" value="Saison: " />
+			<p:selectOneMenu id="saison" value="#{saison}">
+				<f:selectItem itemLabel=" - " itemValue="" />
+				<f:selectItems value="#{saisonBean.allDropdown}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="tagespreis" value="Tagespreis: " />
+			<p:inputNumber id="tagespreis" value="#{tagespreis}" symbol=" €"
+				symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+
+			<p:commandButton value="Reset" type="reset" />
+			<p:commandButton value="Submit"
+				action="#{fahrzeug_in_saisonBean.add(fahrgestellNr, saison, tagespreis)}"
+				update="@form" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

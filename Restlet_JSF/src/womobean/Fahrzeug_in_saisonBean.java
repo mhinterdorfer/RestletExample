@@ -3,6 +3,8 @@ package womobean;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -24,5 +26,16 @@ public class Fahrzeug_in_saisonBean implements Serializable {
 	
 	public Fahrzeug_in_saison getById(int id) {
 		return dao.getById(id);
+	}
+	
+	public void add(int fahrgestellNr, int saison, double tagespreis) {
+		FacesMessage message = null;
+         
+        if(dao.add(fahrgestellNr, saison, tagespreis)) {
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Fahrzeug in Saison hinzugefügt", "Fahrgestellnummer: " + fahrgestellNr);
+        } else {
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Fehler beim Einfügen", "Fahrzeug in Saison konnte nicht eingefügt werden.");
+        }
+        FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 }
