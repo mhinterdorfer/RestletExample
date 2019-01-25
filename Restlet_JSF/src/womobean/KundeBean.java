@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,6 +32,17 @@ public class KundeBean implements Serializable {
 	
 	public Kunde findByParameters(String vn, String nn, String str, String plz, String ort) {
 		return dao.findByParameters(vn, nn, str, plz, ort);
+	}
+	
+	public void add(String vorname, String nachname, String strasse, int plz, String ort) {
+		FacesMessage message = null;
+         
+        if(dao.add(vorname, nachname, strasse, plz, ort)) {
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Kunde hinzugefügt", "Name: " + vorname + " " + nachname);
+        } else {
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Fehler beim Einfügen", "Kunde konnte nicht eingefügt werden.");
+        }
+        FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
 }

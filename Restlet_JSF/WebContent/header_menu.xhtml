@@ -18,6 +18,7 @@
 
 			<p:submenu label="Kunden" rendered="#{empty loginBean.kundenNR}">
 				<p:menuitem value="Anzeigen" action="#{redirectBean.goToPage('show_kunde')}" />
+				<p:menuitem value="Hinzufügen" action="#{redirectBean.goToPage('add_kunde')}" />
 			</p:submenu>
 
 			<p:submenu label="Mietfahrzeug">

@@ -46,4 +46,20 @@ public class KundeDAO implements Serializable {
 			return null;
 		}
 	}
+
+	public boolean add(String vorname, String nachname, String strasse, int plz, String ort) {
+		try {
+			Kunde kunde = new Kunde();
+			kunde.setVorname(vorname);
+			kunde.setNachname(nachname);
+			kunde.setStrasse(strasse);
+			kunde.setPlz(plz);
+			kunde.setOrt(ort);
+			service.addEntity(kunde);
+			return true;
+		}catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 }

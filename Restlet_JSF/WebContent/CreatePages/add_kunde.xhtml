@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
+
+	<ui:include src="../header_menu.xhtml" />
+	<h:form>
+		<h1>Kunde hinzufügen</h1>
+		<p:growl id="growl" showDetail="true" sticky="true" />  
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel for="vorname" value="Vorname: " />
+			<p:inputMask id="vorname" value="#{vorname}" />
+
+			<p:outputLabel for="nachname" value="Nachname: " />
+			<p:inputMask id="nachname" value="#{nachname}" />
+
+			<p:outputLabel for="strasse" value="Straße:" />
+			<p:inputMask id="strasse" value="#{strasse}" />
+			
+			<p:outputLabel for="plz" value="PLZ: " />
+			<p:inputMask id="plz" value="#{plz}" maxlength="2" mask="9?9999"/>
+			
+			<p:outputLabel for="ort" value="Ort:" />
+			<p:inputMask id="ort" value="#{ort}" />
+			
+
+			<p:commandButton value="Reset" type="reset" />
+			<p:commandButton value="Submit" action="#{kundeBean.add(vorname, nachname, strasse, plz, ort)}" update="@form"/>
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>
