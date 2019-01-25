@@ -1,6 +1,7 @@
 package womodao;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,5 +34,21 @@ public class MietfahrzeugDAO implements Serializable {
 	public Mietfahrzeug getById(int id) {
 		Query<Mietfahrzeug> query = service.createMietfahrzeugQuery("/Mietfahrzeugs(" + id + ")");
 		return query.iterator().next();
+	}
+
+	public boolean add(int fahrgestellNr, int kundenNr, int saison, Date datumVon, Date datumBis) {
+		try {
+			Mietfahrzeug mietfahrzeug = new Mietfahrzeug();
+			mietfahrzeug.setFahrgestellNr(fahrgestellNr);
+			mietfahrzeug.setIdKunde(kundenNr);
+			mietfahrzeug.setIdSaison(saison);
+			mietfahrzeug.setDatumVon(datumVon);
+			mietfahrzeug.setDatumBis(datumBis);
+			service.addEntity(mietfahrzeug);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 }

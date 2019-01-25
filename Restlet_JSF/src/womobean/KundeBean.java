@@ -1,6 +1,7 @@
 package womobean;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
@@ -11,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import womodao.KundeDAO;
+import womomodel.Fahrzeug;
 import womomodel.Fahrzeug_in_saison;
 import womomodel.Kunde;
 
@@ -24,6 +26,14 @@ public class KundeBean implements Serializable {
 	
 	public List<Kunde> getAll(){
 		return dao.findAll();
+	}
+	
+	public HashMap<String, Integer> getAllDropdown(){
+		HashMap<String, Integer> kunden = new HashMap<String, Integer>();
+		for(Kunde kunde : dao.findAll()) {
+			kunden.put(kunde.getVorname() + " " + kunde.getNachname(), kunde.getIdKunde());
+		}
+        return kunden;
 	}
 	
 	public Kunde getById(int id) {

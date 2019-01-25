@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
+
+	<ui:include src="../header_menu.xhtml" />
+	<h:form>
+		<h1>Mietfahrzeug hinzufügen</h1>
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel for="fahrgestellNr" value="Fahrgestellnummer: " />
+			<p:selectOneMenu id="fahrgestellNr" value="#{fahrgestellNr}">
+				<f:selectItem itemLabel=" - " itemValue="" />
+				<f:selectItems value="#{fahrzeugBean.allDropdown}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="kundenNr" value="Kunde: " />
+			<p:selectOneMenu id="kundenNr" value="#{kundenNr}">
+				<f:selectItem itemLabel=" - " itemValue="" />
+				<f:selectItems value="#{kundeBean.allDropdown}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="saison" value="Saison: " />
+			<p:selectOneMenu id="saison" value="#{saison}">
+				<f:selectItem itemLabel=" - " itemValue="" />
+				<f:selectItems value="#{saisonBean.allDropdown}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="datumVon" value="Datum Von: " />
+			<p:inputMask id="datumVon" value="#{datumVon}" mask="99/99/9999" />
+			
+			<p:outputLabel for="datumBis" value="Datum Bis: " />
+			<p:inputMask id="datumBis" value="#{datumBis}" mask="99/99/9999" />
+
+			<p:commandButton value="Reset" type="reset" />
+			<p:commandButton value="Submit"
+				action="#{mietfahrzeugBean.add(fahrgestellNr, kundenNr, saison, datumVon, datumBis)}"
+				update="@form" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>
