@@ -1,6 +1,7 @@
 package womobean;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -21,6 +22,14 @@ public class StandortBean implements Serializable {
 	
 	public List<Standort> getAll(){
 		return dao.findAll();
+	}
+	
+	public HashMap<String, Integer> getAllDropdown(){
+		HashMap<String, Integer> standorte = new HashMap<String, Integer>();
+		for(Standort standort : dao.findAll()) {
+			standorte.put(standort.getBezeichnung(), standort.getIdStandort());
+		}
+        return standorte;
 	}
 	
 	public Standort getById(int id) {
