@@ -49,4 +49,14 @@ public class Fahrzeug_in_saisonDAO implements Serializable {
 			return false;
 		}
 	}
+	
+	public boolean update(Fahrzeug_in_saison fahrzeug) {
+		try {
+			service.updateEntity(fahrzeug);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

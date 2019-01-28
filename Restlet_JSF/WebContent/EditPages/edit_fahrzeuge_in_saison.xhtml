@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:include src="../header_menu.xhtml" />
+	<h:form id="form">
+		<h1>Fahrzeuge in Saison bearbeiten</h1>
+		<p:growl id="msgs" showDetail="true" sticky="true" />
+
+		<p:dataTable id="fahrzeuge" var="fahrzeug"
+			value="#{fahrzeug_in_saisonBean.all}" editable="true"
+			style="margin-bottom:20px">
+
+			<p:ajax event="rowEdit"
+				listener="#{fahrzeug_in_saisonBean.onRowEdit}" update=":form:msgs,:form:fahrzeuge" />
+			<p:ajax event="rowEditCancel"
+				listener="#{fahrzeug_in_saisonBean.onRowCancel}" update=":form:msgs,:form:fahrzeuge" />
+
+			<p:column headerText="Fahrgestellnummer">
+				<f:facet name="input">
+					<h:outputText value="#{fahrzeug.fahrgestellNr}" />
+				</f:facet>
+			</p:column>
+
+			<p:column headerText="Saison">
+				<f:facet name="output">
+					<h:outputText value="#{saisonBean.getById(fahrzeug.idSaison).name}" />
+				</f:facet>
+			</p:column>
+
+			<p:column headerText="Tagespreis">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{fahrzeug.tagespreis}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputNumber value="#{fahrzeug.tagespreis}" style="width:100%"
+							label="Year" symbol=" €" symbolPosition="s" decimalSeparator=","
+							thousandSeparator="." />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:35px">
+				<p:rowEditor />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</body>
+</html>
