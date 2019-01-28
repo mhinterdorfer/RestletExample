@@ -24,13 +24,13 @@
 
 		<p:column headerText="Datum Von">
 			<h:outputText value="#{saison.datumVon}">
-				<f:convertDateTime pattern="dd.MM.yyyy" />
+				<f:convertDateTime pattern="MM/dd/yyyy" />
 			</h:outputText>
 		</p:column>
 
 		<p:column headerText="Datum Bis">
-			<h:outputText value="#{saison.datumBis}" >
-				<f:convertDateTime pattern="dd.MM.yyyy" />
+			<h:outputText value="#{saison.datumBis}">
+				<f:convertDateTime pattern="MM/dd/yyyy" />
 			</h:outputText>
 		</p:column>
 	</p:dataTable>
