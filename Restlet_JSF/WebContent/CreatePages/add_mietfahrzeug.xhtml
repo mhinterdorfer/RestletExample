@@ -7,22 +7,10 @@
 
 <h:head></h:head>
 <body>
-	<script type="text/javascript">
-    function handleLoginRequest(xhr, status, args) {
-        if(args.validationFailed || !args.loggedIn) {
-            PF('dlg').jq.effect("shake", {times:5}, 100);
-        }
-        else {
-            PF('dlg').hide();
-            $('#loginLink').fadeOut();
-        }
-    }
-</script>
-
 	<ui:include src="../header_menu.xhtml" />
 	<h:form>
 		<h1>Mietfahrzeug hinzufügen</h1>
-		<p:growl id="growl" showDetail="true" sticky="true" />
+		<p:growl id="growl" showDetail="true" />
 		<h:panelGrid columns="2" cellpadding="5">
 			<p:outputLabel for="fahrgestellNr" value="Fahrgestellnummer: " />
 			<p:selectOneMenu id="fahrgestellNr" value="#{fahrgestellNr}">
@@ -33,7 +21,8 @@
 			<p:outputLabel for="kundenNr" value="Kunde: " />
 			<p:selectOneMenu id="kundenNr" value="#{kundenNr}">
 				<f:selectItem itemLabel=" - " itemValue="" />
-				<f:selectItems value="#{kundeBean.allDropdown}" />
+				<f:selectItems
+					value="#{not empty loginBean.kundenNR ? kundeBean.getSingleDropdown(loginBean.kundenNR) : kundeBean.allDropdown}" />
 			</p:selectOneMenu>
 
 			<p:outputLabel for="saison" value="Saison: " />
@@ -43,10 +32,10 @@
 			</p:selectOneMenu>
 
 			<p:outputLabel for="datumVon" value="Datum Von: " />
-			<p:inputMask id="datumVon" value="#{datumVon}" mask="99/99/9999" />
-			
+			<p:calendar id="datumVon" value="#{datumVon}" />
+
 			<p:outputLabel for="datumBis" value="Datum Bis: " />
-			<p:inputMask id="datumBis" value="#{datumBis}" mask="99/99/9999" />
+			<p:calendar id="datumBis" value="#{datumBis}" />
 
 			<p:commandButton value="Reset" type="reset" />
 			<p:commandButton value="Submit"

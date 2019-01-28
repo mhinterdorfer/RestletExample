@@ -11,7 +11,6 @@ import org.restlet.ext.odata.Query;
 
 import service.WoMoService;
 import womomodel.Fahrzeug;
-import womomodel.Fahrzeug_in_saison;
 
 @ManagedBean
 @SessionScoped

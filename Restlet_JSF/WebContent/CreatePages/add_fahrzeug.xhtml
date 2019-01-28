@@ -7,40 +7,31 @@
 
 <h:head></h:head>
 <body>
-<script type="text/javascript">
-    function handleLoginRequest(xhr, status, args) {
-        if(args.validationFailed || !args.loggedIn) {
-            PF('dlg').jq.effect("shake", {times:5}, 100);
-        }
-        else {
-            PF('dlg').hide();
-            $('#loginLink').fadeOut();
-        }
-    }
-</script>
-
 	<ui:include src="../header_menu.xhtml" />
 	<h:form>
 		<h1>Fahrzeug hinzufügen</h1>
-		<p:growl id="growl" showDetail="true" sticky="true" />  
+		<p:growl id="growl" showDetail="true" />
 		<h:panelGrid columns="2" cellpadding="5">
 			<p:outputLabel for="fahrgestellNr" value="Fahrgestellnummer: " />
-			<p:inputMask id="fahrgestellNr" maxlength="2" mask="9?9999" value="#{fahrgestellNr}" />
+			<p:inputMask id="fahrgestellNr" maxlength="2" mask="9?9999"
+				value="#{fahrgestellNr}" />
 
 			<p:outputLabel for="marke" value="Marke: " />
 			<p:inputMask id="marke" value="#{marke}" />
 
 			<p:outputLabel for="typ" value="Typ:" />
 			<p:inputMask id="typ" value="#{typ}" />
-			
+
 			<p:outputLabel for="standort" value="Standort: " />
 			<p:selectOneMenu id="standort" value="#{standort}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItem itemLabel=" - " itemValue="" />
 				<f:selectItems value="#{standortBean.allDropdown}" />
 			</p:selectOneMenu>
 
 			<p:commandButton value="Reset" type="reset" />
-			<p:commandButton value="Submit" action="#{fahrzeugBean.add(fahrgestellNr, marke, typ, standort)}" update="@form"/>
+			<p:commandButton value="Submit"
+				action="#{fahrzeugBean.add(fahrgestellNr, marke, typ, standort)}"
+				update="@form" />
 		</h:panelGrid>
 	</h:form>
 </body>

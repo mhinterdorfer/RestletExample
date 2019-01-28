@@ -15,7 +15,7 @@ public class RedirectBean implements Serializable {
 	public String goToPage(String page) {
 		return page;
 	}
-	
+
 	public void goToPageXHTML(String page) {
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect(page);

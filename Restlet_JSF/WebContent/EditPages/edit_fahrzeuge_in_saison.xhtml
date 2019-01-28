@@ -10,27 +10,25 @@
 	<ui:include src="../header_menu.xhtml" />
 	<h:form id="form">
 		<h1>Fahrzeuge in Saison bearbeiten</h1>
-		<p:growl id="msgs" showDetail="true" sticky="true" />
+		<p:growl id="msgs" showDetail="true" />
 
 		<p:dataTable id="fahrzeuge" var="fahrzeug"
-			value="#{fahrzeug_in_saisonBean.all}" editable="true"
+			value="#{fahrzeug_in_saisonBean.fahrzeuge}" editable="true"
 			style="margin-bottom:20px">
 
 			<p:ajax event="rowEdit"
-				listener="#{fahrzeug_in_saisonBean.onRowEdit}" update=":form:msgs,:form:fahrzeuge" />
+				listener="#{fahrzeug_in_saisonBean.onRowEdit}"
+				update=":form:msgs,:form:fahrzeuge" />
 			<p:ajax event="rowEditCancel"
-				listener="#{fahrzeug_in_saisonBean.onRowCancel}" update=":form:msgs,:form:fahrzeuge" />
+				listener="#{fahrzeug_in_saisonBean.onRowCancel}"
+				update=":form:msgs,:form:fahrzeuge" />
 
 			<p:column headerText="Fahrgestellnummer">
-				<f:facet name="input">
-					<h:outputText value="#{fahrzeug.fahrgestellNr}" />
-				</f:facet>
+				<h:outputText value="#{fahrzeug.fahrgestellNr}" />
 			</p:column>
 
 			<p:column headerText="Saison">
-				<f:facet name="output">
-					<h:outputText value="#{saisonBean.getById(fahrzeug.idSaison).name}" />
-				</f:facet>
+				<h:outputText value="#{saisonBean.getById(fahrzeug.idSaison).name}" />
 			</p:column>
 
 			<p:column headerText="Tagespreis">

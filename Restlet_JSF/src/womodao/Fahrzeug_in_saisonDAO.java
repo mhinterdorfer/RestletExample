@@ -10,7 +10,6 @@ import org.restlet.ext.odata.Query;
 
 import service.WoMoService;
 import womomodel.Fahrzeug_in_saison;
-import womomodel.Saison;
 
 import java.io.Serializable;
 
@@ -18,19 +17,19 @@ import java.io.Serializable;
 @SessionScoped
 public class Fahrzeug_in_saisonDAO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Inject 
+
+	@Inject
 	transient private WoMoService service;
-	
-	public List<Fahrzeug_in_saison> findAll(){
+
+	public List<Fahrzeug_in_saison> findAll() {
 		Query<Fahrzeug_in_saison> query = service.createFahrzeug_in_saisonQuery("/fahrzeug_in_saison");
 		List<Fahrzeug_in_saison> fahrzeuge = new ArrayList<>();
-		for(Fahrzeug_in_saison fahrzeug : query) {
+		for (Fahrzeug_in_saison fahrzeug : query) {
 			fahrzeuge.add(fahrzeug);
 		}
 		return fahrzeuge;
 	}
-	
+
 	public Fahrzeug_in_saison getById(int id) {
 		Query<Fahrzeug_in_saison> query = service.createFahrzeug_in_saisonQuery("/fahrzeug_in_saison(" + id + ")");
 		return query.iterator().next();
@@ -44,12 +43,12 @@ public class Fahrzeug_in_saisonDAO implements Serializable {
 			fahrzeug.setTagespreis(tagespreis);
 			service.addEntity(fahrzeug);
 			return true;
-		}catch (Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}
 	}
-	
+
 	public boolean update(Fahrzeug_in_saison fahrzeug) {
 		try {
 			service.updateEntity(fahrzeug);

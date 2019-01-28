@@ -7,34 +7,24 @@
 
 <h:head></h:head>
 <body>
-	<script type="text/javascript">
-    function handleLoginRequest(xhr, status, args) {
-        if(args.validationFailed || !args.loggedIn) {
-            PF('dlg').jq.effect("shake", {times:5}, 100);
-        }
-        else {
-            PF('dlg').hide();
-            $('#loginLink').fadeOut();
-        }
-    }
-</script>
-
 	<ui:include src="../header_menu.xhtml" />
 	<h:form>
 		<h1>Saison hinzufügen</h1>
-		<p:growl id="growl" showDetail="true" sticky="true" />
+		<p:growl id="growl" showDetail="true" />
 		<h:panelGrid columns="2" cellpadding="5">
 			<p:outputLabel for="saisonNr" value="Saisonnummer: " />
-			<p:inputMask id="saisonNr" maxlength="2" mask="9?9999" value="#{saisonNr}" />
-			
+			<p:inputMask id="saisonNr" maxlength="2" mask="9?9999"
+				value="#{saisonNr}" />
+
 			<p:outputLabel for="name" value="Name: " />
-			<p:inputMask id="name" value="#{name}"/>
+			<p:inputMask id="name" value="#{name}" />
 
 			<p:outputLabel for="datumVon" value="Datum Von: " />
-			<p:inputMask id="datumVon" value="#{datumVon}" mask="99/99/9999" />
-			
+			<p:calendar id="datumVon" value="#{datumVon}" />
+
 			<p:outputLabel for="datumBis" value="Datum Bis: " />
-			<p:inputMask id="datumBis" value="#{datumBis}" mask="99/99/9999" />
+			<p:calendar id="datumBis" value="#{datumBis}" />
+
 
 			<p:commandButton value="Reset" type="reset" />
 			<p:commandButton value="Submit"

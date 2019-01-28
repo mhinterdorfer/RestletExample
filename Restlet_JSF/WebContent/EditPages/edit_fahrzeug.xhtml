@@ -12,14 +12,15 @@
 		<h1>Fahrzeuge bearbeiten</h1>
 		<p:growl id="msgs" showDetail="true" />
 
-		<p:dataTable id="fahrzeuge" var="fahrzeug" value="#{fahrzeugBean.fahrzeuge}"
-			editable="true" style="margin-bottom:20px">
+		<p:dataTable id="fahrzeuge" var="fahrzeug"
+			value="#{fahrzeugBean.fahrzeuge}" editable="true"
+			style="margin-bottom:20px">
 
 			<p:ajax event="rowEdit" listener="#{fahrzeugBean.onRowEdit}"
 				update=":form:msgs,:form:fahrzeuge" />
 			<p:ajax event="rowEditCancel" listener="#{fahrzeugBean.onRowCancel}"
 				update=":form:msgs,:form:fahrzeuge" />
-				
+
 			<p:column headerText="Fahrgestellnummer">
 				<h:outputText value="#{fahrzeug.fahrgestellNr}" />
 			</p:column>
