@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:include src="../header_menu.xhtml" />
+	<h:form id="form">
+		<h1>Saisonen bearbeiten</h1>
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="saisonen" var="saison" value="#{saisonBean.saisonen}"
+			editable="true" style="margin-bottom:20px">
+
+			<p:ajax event="rowEdit" listener="#{saisonBean.onRowEdit}"
+				update=":form:msgs,:form:saisonen" />
+			<p:ajax event="rowEditCancel" listener="#{saisonBean.onRowCancel}"
+				update=":form:msgs,:form:saisonen" />
+
+			<p:column headerText="Saison ID">
+				<h:outputText value="#{saison.idSaison}" />
+			</p:column>
+
+			<p:column headerText="Name">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{saison.name}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{saison.name}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Datum Von">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{saison.datumVon}">
+							<f:convertDateTime pattern="MM/dd/yyyy" />
+						</h:outputText>
+					</f:facet>
+					<f:facet name="input">
+						<p:calendar value="#{saison.datumVon}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Datum Bis">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{saison.datumBis}">
+							<f:convertDateTime pattern="MM/dd/yyyy" />
+						</h:outputText>
+					</f:facet>
+					<f:facet name="input">
+						<p:calendar value="#{saison.datumBis}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:35px">
+				<p:rowEditor />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</body>
+</html>

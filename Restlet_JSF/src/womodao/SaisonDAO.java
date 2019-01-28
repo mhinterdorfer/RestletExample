@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,19 +18,19 @@ import womomodel.Saison;
 @SessionScoped
 public class SaisonDAO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Inject 
+
+	@Inject
 	transient private WoMoService service;
-	
-	public List<Saison> findAll(){
+
+	public List<Saison> findAll() {
 		Query<Saison> query = service.createSaisonQuery("/Saisons");
 		List<Saison> saisons = new ArrayList<>();
-		for(Saison saison : query) {
+		for (Saison saison : query) {
 			saisons.add(saison);
 		}
 		return saisons;
 	}
-	
+
 	public Saison getById(int id) {
 		Query<Saison> query = service.createSaisonQuery("/Saisons(" + id + ")");
 		return query.iterator().next();
@@ -46,8 +45,18 @@ public class SaisonDAO implements Serializable {
 			saison.setDatumBis(datumBis);
 			service.addEntity(saison);
 			return true;
-		}catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean update(Saison edit) {
+		try {
+			service.updateEntity(edit);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
