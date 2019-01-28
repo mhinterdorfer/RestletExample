@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:include src="../header_menu.xhtml" />
+	<h:form id="form">
+		<h1>Kunden bearbeiten</h1>
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="kunden" var="kunde" value="#{kundeBean.kunden}"
+			editable="true" style="margin-bottom:20px">
+
+			<p:ajax event="rowEdit" listener="#{kundeBean.onRowEdit}"
+				update=":form:msgs,:form:kunden" />
+			<p:ajax event="rowEditCancel" listener="#{kundeBean.onRowCancel}"
+				update=":form:msgs,:form:kunden" />
+
+			<p:column headerText="Kundennummer">
+				<h:outputText value="#{kunde.idKunde}" />
+			</p:column>
+
+			<p:column headerText="Vorname">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{kunde.vorname}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{kunde.vorname}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Nachname">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{kunde.nachname}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{kunde.nachname}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Straße">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{kunde.strasse}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{kunde.strasse}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="PLZ">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{kunde.plz}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputNumber value="#{kunde.plz}" thousandSeparator=""
+							decimalSeparator="" decimalPlaces="0" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Ort">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{kunde.ort}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{kunde.ort}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:35px">
+				<p:rowEditor />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</body>
+</html>
