@@ -5,6 +5,30 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 	<navigation-rule>
 		<navigation-case>
+			<from-outcome>edit_fahrzeug</from-outcome>
+			<to-view-id>/EditPages/edit_fahrzeug.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit_fahrzeuge_in_saison</from-outcome>
+			<to-view-id>/EditPages/edit_fahrzeuge_in_saison.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit_kunde</from-outcome>
+			<to-view-id>/EditPages/edit_kunde.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit_mietfahrzeug</from-outcome>
+			<to-view-id>/EditPages/edit_mietfahrzeug.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit_saison</from-outcome>
+			<to-view-id>/EditPages/edit_saison.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit_standort</from-outcome>
+			<to-view-id>/EditPages/edit_standort.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>add_standort</from-outcome>
 			<to-view-id>/CreatePages/add_standort.xhtml</to-view-id>
 		</navigation-case>
