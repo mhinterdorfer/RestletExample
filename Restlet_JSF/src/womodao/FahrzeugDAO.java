@@ -49,4 +49,14 @@ public class FahrzeugDAO implements Serializable {
 			return false;
 		}
 	}
+
+	public boolean update(Fahrzeug fahrzeug) {
+		try {
+			service.updateEntity(fahrzeug);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
