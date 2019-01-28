@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:include src="../header_menu.xhtml" />
+	<h:form id="form">
+		<h1>Mietfahrzeuge bearbeiten</h1>
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="fahrzeuge" var="fahrzeug"
+			value="#{mietfahrzeugBean.fahrzeuge}" editable="true"
+			style="margin-bottom:20px">
+
+			<p:ajax event="rowEdit" listener="#{mietfahrzeugBean.onRowEdit}"
+				update=":form:msgs,:form:fahrzeuge" />
+			<p:ajax event="rowEditCancel"
+				listener="#{mietfahrzeugBean.onRowCancel}"
+				update=":form:msgs,:form:fahrzeuge" />
+
+			<p:column headerText="Fahrgestellnummer">
+				<h:outputText value="#{fahrzeug.fahrgestellNr}" />
+			</p:column>
+
+			<p:column headerText="Kunde">
+				<h:outputText
+					value="#{kundeBean.getById(fahrzeug.idKunde).nachname}" />
+			</p:column>
+
+			<p:column headerText="Saison">
+				<h:outputText value="#{saisonBean.getById(fahrzeug.idSaison).name}" />
+			</p:column>
+
+			<p:column headerText="Datum Von">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{fahrzeug.datumVon}">
+							<f:convertDateTime pattern="MM/dd/yyyy" />
+						</h:outputText>
+					</f:facet>
+					<f:facet name="input">
+						<p:calendar value="#{fahrzeug.datumVon}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Datum Bis">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{fahrzeug.datumBis}">
+							<f:convertDateTime pattern="MM/dd/yyyy" />
+						</h:outputText>
+					</f:facet>
+					<f:facet name="input">
+						<p:calendar value="#{fahrzeug.datumBis}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:35px">
+				<p:rowEditor />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</body>
+</html>
