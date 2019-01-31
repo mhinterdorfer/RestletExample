@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -15,10 +16,11 @@ import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
 
 import womodao.StandortDAO;
+import womomodel.Mietfahrzeug;
 import womomodel.Standort;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class StandortBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<Standort> standorte = new ArrayList<>();
@@ -76,6 +78,19 @@ public class StandortBean implements Serializable {
 		FacesMessage msg = new FacesMessage("Bearbeitung abgebrochen",
 				"Standortnummer: " + ((Standort) event.getObject()).getIdStandort());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	public void delete(Standort standort) {
+		FacesMessage message = null;
+		if (dao.delete(standort)) {
+			standorte.remove(standort);
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Standort gelöscht",
+					"Standortnummer: " + standort.getIdStandort());
+		} else {
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Fehler beim Löschen",
+					"Standort konnte nicht gelöscht werden.");
+		}
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
 	public List<Standort> getStandorte() {

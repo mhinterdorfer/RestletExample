@@ -59,4 +59,14 @@ public class StandortDAO implements Serializable {
 			return false;
 		}
 	}
+
+	public boolean delete(Standort standort) {
+		try {
+			service.deleteEntity(standort);
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 }
