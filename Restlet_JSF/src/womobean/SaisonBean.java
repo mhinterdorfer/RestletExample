@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -17,10 +18,11 @@ import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
 
 import womodao.SaisonDAO;
+import womomodel.Mietfahrzeug;
 import womomodel.Saison;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class SaisonBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<Saison> saisonen = new ArrayList<>();
@@ -84,6 +86,19 @@ public class SaisonBean implements Serializable {
 		FacesMessage msg = new FacesMessage("Bearbeitung abgebrochen",
 				"Kundennummer: " + ((Saison) event.getObject()).getIdSaison());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	public void delete(Saison saison) {
+		FacesMessage message = null;
+		if (dao.delete(saison)) {
+			saisonen.remove(saison);
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Saison gelöscht",
+					"Saisonnummer: " + saison.getIdSaison());
+		} else {
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Fehler beim Löschen",
+					"Saison konnte nicht gelöscht werden.");
+		}
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
 	public List<Saison> getSaisonen() {

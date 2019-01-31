@@ -60,4 +60,14 @@ public class SaisonDAO implements Serializable {
 			return false;
 		}
 	}
+
+	public boolean delete(Saison saison) {
+		try {
+			service.deleteEntity(saison);
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 }
