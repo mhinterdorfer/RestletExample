@@ -15,6 +15,7 @@ import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
 
 import womodao.MietfahrzeugDAO;
+import womomodel.Fahrzeug_in_saison;
 import womomodel.Kunde;
 import womomodel.Mietfahrzeug;
 
@@ -86,6 +87,19 @@ public class MietfahrzeugBean implements Serializable {
 		FacesMessage msg = new FacesMessage("Bearbeitung abgebrochen",
 				"Kundennummer: " + ((Kunde) event.getObject()).getIdKunde());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	public void delete(Mietfahrzeug fahrzeug) {
+		FacesMessage message = null;
+		if (dao.delete(fahrzeug)) {
+			fahrzeuge.remove(fahrzeug);
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Mietfahrzeug gelöscht",
+					"Fahrgestellnummer: " + fahrzeug.getFahrgestellNr());
+		} else {
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Fehler beim Löschen",
+					"Mietfahrzeug konnte nicht gelöscht werden.");
+		}
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
 	public List<Mietfahrzeug> getFahrzeuge() {

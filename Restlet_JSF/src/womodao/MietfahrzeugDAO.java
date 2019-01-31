@@ -70,4 +70,14 @@ public class MietfahrzeugDAO implements Serializable {
 			return false;
 		}
 	}
+
+	public boolean delete(Mietfahrzeug fahrzeug) {
+		try {
+			service.deleteEntity(fahrzeug);
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 }
