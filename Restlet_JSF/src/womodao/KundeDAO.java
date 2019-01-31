@@ -73,4 +73,14 @@ public class KundeDAO implements Serializable {
 			return false;
 		}
 	}
+
+	public boolean delete(Kunde kunde) {
+		try {
+			service.deleteEntity(kunde);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 }
