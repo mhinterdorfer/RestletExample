@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -19,7 +19,7 @@ import womomodel.Fahrzeug;
 import java.io.Serializable;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class FahrzeugBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<Fahrzeug> fahrzeuge = new ArrayList<>();
@@ -79,6 +79,19 @@ public class FahrzeugBean implements Serializable {
 		FacesMessage msg = new FacesMessage("Bearbeitung abgebrochen",
 				"Fahrgestellnummer: " + ((Fahrzeug) event.getObject()).getFahrgestellNr());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	public void delete(Fahrzeug fahrzeug) {
+		FacesMessage message = null;
+		if (dao.delete(fahrzeug)) {
+			fahrzeuge.remove(fahrzeug);
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Fahrzeug gelöscht",
+					"Fahrgestellnummer: " + fahrzeug.getFahrgestellNr());
+		} else {
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Fehler beim Löschen",
+					"Fahrzeug konnte nicht gelöscht werden.");
+		}
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
 	public List<Fahrzeug> getFahrzeuge() {

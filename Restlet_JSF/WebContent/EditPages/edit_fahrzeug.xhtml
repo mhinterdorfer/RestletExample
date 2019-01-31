@@ -52,6 +52,11 @@
 			<p:column style="width:35px">
 				<p:rowEditor />
 			</p:column>
+			
+			<p:column style="width:35px">
+				<p:commandButton update="@form" icon="fa fa-trash" action="#{fahrzeugBean.delete(fahrzeug)}"  />
+			</p:column>
+			
 		</p:dataTable>
 	</h:form>
 </body>

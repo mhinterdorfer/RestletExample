@@ -58,4 +58,14 @@ public class FahrzeugDAO implements Serializable {
 			return false;
 		}
 	}
+
+	public boolean delete(Fahrzeug edit) {
+		try {
+			service.deleteEntity(edit);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 }
