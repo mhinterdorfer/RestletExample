@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -13,11 +14,12 @@ import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
 
 import womodao.Fahrzeug_in_saisonDAO;
+import womomodel.Fahrzeug;
 import womomodel.Fahrzeug_in_saison;
 import java.io.Serializable;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class Fahrzeug_in_saisonBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<Fahrzeug_in_saison> fahrzeuge = new ArrayList<>();
@@ -68,6 +70,19 @@ public class Fahrzeug_in_saisonBean implements Serializable {
 		FacesMessage msg = new FacesMessage("Bearbeitung abgebrochen",
 				"Fahrgestellnummer: " + ((Fahrzeug_in_saison) event.getObject()).getFahrgestellNr());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	public void delete(Fahrzeug_in_saison fahrzeug) {
+		FacesMessage message = null;
+		if (dao.delete(fahrzeug)) {
+			fahrzeuge.remove(fahrzeug);
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Fahrzeug in Saison gelöscht",
+					"Fahrgestellnummer: " + fahrzeug.getFahrgestellNr());
+		} else {
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Fehler beim Löschen",
+					"Fahrzeug in Saison konnte nicht gelöscht werden.");
+		}
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
 	public List<Fahrzeug_in_saison> getFahrzeuge() {

@@ -47,6 +47,10 @@
 			<p:column style="width:35px">
 				<p:rowEditor />
 			</p:column>
+			
+			<p:column style="width:35px">
+				<p:commandButton update="@form" icon="fa fa-trash" action="#{fahrzeug_in_saisonBean.delete(fahrzeug)}"  />
+			</p:column>
 		</p:dataTable>
 	</h:form>
 </body>

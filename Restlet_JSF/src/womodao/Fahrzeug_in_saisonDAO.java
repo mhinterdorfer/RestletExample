@@ -58,4 +58,14 @@ public class Fahrzeug_in_saisonDAO implements Serializable {
 			return false;
 		}
 	}
+
+	public boolean delete(Fahrzeug_in_saison fahrzeug) {
+		try {
+			service.deleteEntity(fahrzeug);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
